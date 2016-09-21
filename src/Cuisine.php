@@ -28,7 +28,7 @@
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO cuisines (type) VALUES ('{$this->getType()}')");
-            $this->id = $GLOBALS['DB']->lastInsertId();
+            $this->id = (int) $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
@@ -60,6 +60,25 @@
                 }
             }
             return $found_cuisine;
+        }
+
+        function getRestaurants()
+        {
+            $restaurants = array();
+            $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()};");
+            var_dump($returned_restaurants);
+            var_dump($this->getId());
+            foreach ($returned_restaurants as $restaurant)
+            {
+                $name = $restaurant['name'];
+                $stars = $restaurant['stars'];
+                $hours = $restaurant['hours'];
+                $id = $restaurant['id'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $new_restaurant = new Restaurant($id, $name, $stars, $hours, $cuisine_id);
+                array_push($restaurants, $new_restaurant);
+            }
+            return $restaurants;
         }
     }
 ?>
