@@ -52,8 +52,12 @@
      return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
     });
 
+    $app->get("/create_cuisine", function() use ($app){
+        return $app['twig']->render('create_cuisine.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
 
-    $app->post("/delete_cuisines", function() use ($app) {
+
+    $app->get("/delete_cuisines", function() use ($app) {
         Cuisine::deleteAll();
         return $app['twig']->render('index.html.twig');
     });
@@ -65,10 +69,10 @@
     });
 
     $app->patch("/cuisines/{id}", function($id) use ($app) {
-        $type = $_POST['type'];
+        $new_type = $_POST['new_type'];
         $cuisine = Cuisine::find($id);
-        $cuisine->update($type);
-        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
+        $cuisine->update($new_type);
+        return $app['twig']->render('cuisines.html.twig', array('cuisine' => $cuisine, 'cuisines' => Cuisine::getAll()));
     });
 
     $app->get("/restaurants/{id}/edit", function($id) use ($app) {

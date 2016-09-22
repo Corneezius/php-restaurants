@@ -33,7 +33,7 @@
 
         function update($new_type)
         {
-            $GLOBALS['DB']->exec("UPDATE cuisine SET type = '{$new_type}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE cuisines SET type = '{$new_type}' WHERE id = {$this->getId()};");
             $this->setType($new_type);
         }
 
