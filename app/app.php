@@ -62,6 +62,18 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get("/cuisines/{id}/delete", function($id) use ($app) {
+        $cuisine = Cuisine::find($id);
+        $cuisine->delete();
+        return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
+    });
+
+    $app->get("/restaurants/{id}/delete", function($id) use ($app) {
+        $restaurant = Restaurant::find($id);
+        $restaurant->delete();
+        return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
+    });
+
     $app->get("/cuisines/{id}/edit", function($id) use ($app)
     {
         $cuisine = Cuisine::find($id);

@@ -18,6 +18,7 @@
                 {% for restaurant in restaurants %}
                    <li>{{ restaurant.getName }}, {{ restaurant.getStars }} Stars, Open: {{ restaurant.getHours }}
                        <a href="/restaurants/{{restaurant.getId}}/edit"><button class="btn btn-info btn-xs">Edit</button></a>
+                        <a href="/restaurants/{{restaurant.getId}}/delete"><button class="btn btn-danger btn-xs">Delete</button></a>
                    </li>
                  {% endfor %}
                </ul>

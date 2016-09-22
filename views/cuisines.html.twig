@@ -18,6 +18,7 @@
                 {% for cuisine in cuisines %}
                    <li>{{ cuisine.getType}}
                        <a href="/cuisines/{{cuisine.getId}}/edit"><button class="btn btn-info btn-xs">Edit</button></a>
+                       <a href="/cuisines/{{cuisine.getId}}/delete"><button class="btn btn-danger btn-xs">Delete</button></a>
                        <ul>
                            {% for restaurant in cuisine.getRestaurants %}
                                 <li>{{ restaurant.getName }}, {{ restaurant.getStars }} Stars, {{ restaurant.getHours }}</li>
