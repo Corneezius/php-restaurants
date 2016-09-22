@@ -20,100 +20,100 @@
             Cuisine::deleteAll();
             Restaurant::deleteAll();
         }
-        //
-        // function test_getName()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $test_Cuisine = new Cuisine($type);
-        //
-        //     //Act
-        //     $result = $test_Cuisine->getType();
-        //
-        //     //Assert
-        //     $this->assertEquals($type, $result);
-        // }
-        //
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $id = 1;
-        //     $test_Cuisine = new Cuisine($type, $id);
-        //
-        //     //Act
-        //     $result = $test_Cuisine->getId();
-        //
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
-        // function test_save()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $test_Cuisine = new Cuisine($type);
-        //     $test_Cuisine->save();
-        //
-        //     //Act
-        //     $result = Cuisine::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals($test_Cuisine, $result[0]);
-        // }
-        //
-        // function test_getAll()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $type2 = "Chinese";
-        //     $test_Cuisine = new Cuisine($type);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($type2);
-        //     $test_Cuisine2->save();
-        //
-        //     //Act
-        //     $result = Cuisine::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([$test_Cuisine, $test_Cuisine2], $result);
-        // }
-        //
-        // function test_deleteAll()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $type2 = "Chinese";
-        //     $test_Cuisine = new Cuisine($type);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($type2);
-        //     $test_Cuisine2->save();
-        //
-        //     //Act
-        //     Cuisine::deleteAll();
-        //     $result = Cuisine::getAll();
-        //
-        //     //Assert
-        //     $this->assertEquals([], $result);
-        // }
-        //
-        // function test_find()
-        // {
-        //     //Arrange
-        //     $type = "Pub";
-        //     $type2 = "Chinese";
-        //     $test_Cuisine = new Cuisine($type);
-        //     $test_Cuisine->save();
-        //     $test_Cuisine2 = new Cuisine($type2);
-        //     $test_Cuisine2->save();
-        //
-        //     //Act
-        //     $result = Cuisine::find($test_Cuisine->getId());
-        //
-        //     //Assert
-        //     $this->assertEquals($test_Cuisine, $result);
-        // }
+        // Test 8
+        function test_getName()
+        {
+            //Arrange
+            $type = "Pub";
+            $test_Cuisine = new Cuisine($type);
 
+            //Act
+            $result = $test_Cuisine->getType();
+
+            //Assert
+            $this->assertEquals($type, $result);
+        }
+        // Test 9
+        function test_getId()
+        {
+            //Arrange
+            $type = "Pub";
+            $id = 1;
+            $test_Cuisine = new Cuisine($type, $id);
+
+            //Act
+            $result = $test_Cuisine->getId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+        // Test 10
+        function test_save()
+        {
+            //Arrange
+            $type = "Pub";
+            $test_Cuisine = new Cuisine($type);
+            $test_Cuisine->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals($test_Cuisine, $result[0]);
+        }
+        // Test 11
+        function test_getAll()
+        {
+            //Arrange
+            $type = "Pub";
+            $type2 = "Chinese";
+            $test_Cuisine = new Cuisine($type);
+            $test_Cuisine->save();
+            $test_Cuisine2 = new Cuisine($type2);
+            $test_Cuisine2->save();
+
+            //Act
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([$test_Cuisine, $test_Cuisine2], $result);
+        }
+        // Test 12
+        function test_deleteAll()
+        {
+            //Arrange
+            $type = "Pub";
+            $type2 = "Chinese";
+            $test_Cuisine = new Cuisine($type);
+            $test_Cuisine->save();
+            $test_Cuisine2 = new Cuisine($type2);
+            $test_Cuisine2->save();
+
+            //Act
+            Cuisine::deleteAll();
+            $result = Cuisine::getAll();
+
+            //Assert
+            $this->assertEquals([], $result);
+        }
+        // Test 13
+        function test_find()
+        {
+            //Arrange
+            $type = "Pub";
+            $type2 = "Chinese";
+            $test_Cuisine = new Cuisine($type);
+            $test_Cuisine->save();
+            $test_Cuisine2 = new Cuisine($type2);
+            $test_Cuisine2->save();
+
+            //Act
+            $result = Cuisine::find($test_Cuisine->getId());
+
+            //Assert
+            $this->assertEquals($test_Cuisine, $result);
+        }
+        // Test 14
         function test_get_restaurant()
         {
             //Arrange
@@ -141,6 +141,23 @@
 
             //Assert
             $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+        }
+        // Test 15
+        function test_update()
+        {
+            $type ="Pub";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+            $test_cuisine->save();
+
+            $new_type = "chinese ducks";
+
+            // act
+            $test_cuisine->update($new_type);
+
+            // assert
+            $result = $test_cuisine->getType();
+            $this->assertEquals("chinese ducks", $result);
         }
     }
 ?>

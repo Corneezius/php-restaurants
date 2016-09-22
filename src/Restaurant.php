@@ -58,10 +58,31 @@
             return $this->cuisine_id;
         }
 
+        function update($new_name, $new_stars, $new_hours)
+        {
+            $GLOBALS['DB']->exec("UPDATE restaurants SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+
+            $GLOBALS['DB']->exec("UPDATE restaurants SET stars = '{$new_stars}' WHERE id = {$this->getId()};");
+            $this->setStars($new_stars);
+
+            $GLOBALS['DB']->exec("UPDATE restaurants SET hours = '{$new_hours}' WHERE id = {$this->getId()};");
+            $this->setHours($new_hours);
+
+        }
+
+
+
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO restaurants (name, stars, hours, cuisine_id) VALUES ('{$this->getName()}', {$this->getStars()}, '{$this->getHours()}', {$this->getCuisineId()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE id = {$this->getId()};");
         }
 
         static function getAll()

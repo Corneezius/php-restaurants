@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Restaurants</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Restaurants</h1>
+            <a href="/"><button class="btn btn-primary">Home</button></a>
+            <a href="/create_restaurant"><button class="btn btn-success">Add</button></a>
+            <a href="/delete_restaurants"><button class="btn btn-warning">Delete All</button></a>
+
+            {% if restaurants is not empty %}
+                <p>Here are all your restaurants:</p>
+                <ul>
+                {% for restaurant in restaurants %}
+                   <li>{{ restaurant.getName }}, {{ restaurant.getStars }} Stars, {{ restaurant.getHours }}
+                       <a href="/restaurants/{{restaurant.getId}}/edit"><button class="btn btn-info btn-xs">Edit</button></a>
+                   </li>
+                 {% endfor %}
+               </ul>
+            {% endif %}
+
+        </div>
+    </body>
+</html>

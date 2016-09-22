@@ -31,6 +31,12 @@
             $this->id = (int) $GLOBALS['DB']->lastInsertId();
         }
 
+        function update($new_type)
+        {
+            $GLOBALS['DB']->exec("UPDATE cuisine SET type = '{$new_type}' WHERE id = {$this->getId()};");
+            $this->setType($new_type);
+        }
+
         static function getAll()
         {
             $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisines;");
@@ -66,8 +72,6 @@
         {
             $restaurants = array();
             $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()};");
-            var_dump($returned_restaurants);
-            var_dump($this->getId());
             foreach ($returned_restaurants as $restaurant)
             {
                 $name = $restaurant['name'];
