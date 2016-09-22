@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Edit a Restaurant</title>
     </head>
     <body>
@@ -10,17 +11,17 @@
 
             <form action="/restaurants/{{restaurant.getId}}" method="post">
                 <input name="_method" type="hidden" value="patch">
+                <div class="form-group">
+                    <label for="new_name">Rename your restaurant:</label>
+                    <input class="form-control" id="new_name" name="new_name" type="text">
 
-                <label for="new_name">Rename your restaurant:</label>
-                <input id="new_name" name="new_name" type="text">
+                    <label for="new_stars">Change your Rating</label>
+                    <input class="form-control" id="new_stars" name="new_stars" type="text">
 
-                <label for="new_stars">Change your Rating</label>
-                <input id="new_stars" name="new_stars" type="text">
-
-                <label for="new_hours">Update Your Hours</label>
-                <input id="new_hours" name="new_hours" type="text">
-
-                <button type="submit">Update</button>
+                    <label for="new_hours">Update Your Hours</label>
+                    <input class="form-control" id="new_hours" name="new_hours" type="text">
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </body>

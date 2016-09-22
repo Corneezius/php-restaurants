@@ -10,20 +10,20 @@
             <h1>Cuisines</h1>
             <a href="/"><button class="btn btn-primary">Home</button></a>
             <a href="/create_cuisine"><button class="btn btn-success">Add</button></a>
-            <a href="/delete_cuisines"><button class="btn btn-warning">Delete All</button></a>
+            <a href="/delete_cuisines"><button class="btn btn-danger">Delete All</button></a>
 
             {% if cuisines is not empty %}
-                <p>Here are all your cuisines:</p>
+                <h3>Here are all your cuisines:</h3>
                 <ul>
                 {% for cuisine in cuisines %}
-                   <li>{{ cuisine.getType}}
+                   <li><h4>{{ cuisine.getType}}
                        <a href="/cuisines/{{cuisine.getId}}/edit"><button class="btn btn-info btn-xs">Edit</button></a>
                        <a href="/cuisines/{{cuisine.getId}}/delete"><button class="btn btn-danger btn-xs">Delete</button></a>
                        <ul>
                            {% for restaurant in cuisine.getRestaurants %}
                                 <li>{{ restaurant.getName }}, {{ restaurant.getStars }} Stars, {{ restaurant.getHours }}</li>
                                {% endfor %}
-                       </ul>
+                       </ul></h4>
                    </li>
                  {% endfor %}
                </ul>

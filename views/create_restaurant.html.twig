@@ -2,30 +2,36 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>New Restaurant</title>
 </head>
 <body>
     <div class="container">
         <h1>Add New Restaurant</h1>
-
+        <div class="row">
        <form action='/restaurants' method='post'>
-           <label for='name'>Restaurant Name</label>
-           <input id='name' name='name' type='text'>
+           <div class="form-group col-sm-4">
+               <label for='name'>Restaurant Name</label>
+               <input class="form-control" id='name' name='name' type='text'>
 
-           <label for='stars'>Restaurant Stars</label>
-           <input id='stars' name='stars' type='text'>
+               <label for='stars'>Restaurant Stars</label>
+               <input class="form-control" id='stars' name='stars' type='number'>
 
-           <label for='hours'>Restaurant Hours</label>
-           <input id='hours' name='hours' type='text'>
-
-           <select name="cuisine_id" id="cuisine_id" class="form-control">
-               {% for cuisine in cuisines %}
-               <option value="{{cuisine.getId}}">{{cuisine.getType}}</option>
-               {% endfor %}
-            </select>
-
-           <button type='submit'>Add restaurant</button>
+               <label for='hours'>Restaurant Hours</label>
+               <input class="form-control" id='hours' name='hours' type='text'>
+           </div>
+       </div>
+       <div class="row">
+           <div class="form-group col-sm-4">
+               <select name="cuisine_id" id="cuisine_id" class="form-control">
+                   {% for cuisine in cuisines %}
+                   <option value="{{cuisine.getId}}">{{cuisine.getType}}</option>
+                   {% endfor %}
+                </select>
+            </div>
+           <button type='submit' class="btn btn-primary">Add restaurant</button>
        </form>
+       </div>
    </div>
 </body>
 </html>
